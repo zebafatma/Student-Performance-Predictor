@@ -1,0 +1,395 @@
+/* App.css - Responsive, professional look */
+
+/* --- Reset-ish helpers --- */
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: #f5f8fb; color: #111827; }
+
+/* --- Page container --- */
+.main {
+  padding: 28px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 340px; /* left flexible, right fixed */
+  gap: 22px;
+  align-items: start;
+}
+
+/* On smaller screens, single column */
+@media (max-width: 980px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+  }
+}
+
+/* --- Card base --- */
+.card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(17,24,39,0.06);
+  width: 100%;
+}
+
+/* Left and right columns */
+.left { }
+.right {
+  position: sticky;
+  top: 20px; /* keeps info visible on tall pages */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- Tabs row --- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.tab-btn.active {
+  background: linear-gradient(90deg, #1f6feb, #2ea6ff);
+  color: white;
+  box-shadow: 0 6px 18px rgba(46,166,255,0.14);
+  border: none;
+}
+
+/* --- Form fields --- */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.field span {
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+.field input[type="number"],
+.field input[type="text"],
+.field select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6eef8;
+  background: #fcfeff;
+  font-size: 14px;
+  color: #0f1724;
+  width: 100%;
+}
+
+/* Ensure inputs don't overflow */
+input, select, textarea, button {
+  min-width: 0;
+}
+
+/* --- Action buttons --- */
+.row { display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
+.primary {
+  background: #0b63d1;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(11,99,209,0.12);
+}
+.primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+button[type="button"] {
+  background: transparent;
+  border: 1px solid #dbeafe;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* --- Result box --- */
+.result {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f8fbff, #ffffff);
+  border: 1px solid #eef6ff;
+}
+.pass { color: #0f9d56; font-weight: 700; }
+.fail { color: #e03b3b; font-weight: 700; }
+
+/* --- Info / right column cards --- */
+.info-card, .history-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(17,24,39,0.04);
+}
+.info-card h3, .history-card h4 { margin: 0 0 8px 0; }
+.info-card ul { margin: 0; padding-left: 18px; color: #374151; }
+
+/* --- HISTORY TABLE --- */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+  table-layout: fixed;
+}
+
+/* Make table scroll horizontally inside the card if necessary */
+.card .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* header */
+.history-table thead th {
+  position: sticky;
+  top: 0;
+  background: #0b63d1;
+  color: #fff;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* cells */
+.history-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+  word-wrap: break-word;
+  white-space: nowrap;
+}
+
+/* zebra rows */
+.history-table tbody tr:nth-child(odd) { background: #ffffff; }
+.history-table tbody tr:nth-child(even) { background: #fbfdff; }
+
+/* hover */
+.history-table tbody tr:hover { background: #eef7ff; }
+
+/* small column sizing */
+.history-table th:nth-child(1), .history-table td:nth-child(1) { width: 52px; }
+.history-table th:nth-child(2), .history-table td:nth-child(2) { width: 80px; }
+.history-table th:nth-child(3), .history-table td:nth-child(3) { width: 70px; }
+.history-table th:nth-child(4), .history-table td:nth-child(4) { width: 60px; }
+.history-table th:nth-child(5), .history-table td:nth-child(5) { width: 80px; }
+.history-table th:nth-child(6), .history-table td:nth-child(6) { width: 80px; }
+.history-table th:nth-child(7), .history-table td:nth-child(7) { width: 90px; }
+.history-table th:nth-child(8), .history-table td:nth-child(8) { width: 60px; }
+.history-table th:nth-child(9), .history-table td:nth-child(9) { width: 140px; }
+
+/* label coloring */
+.history-table .pass { color: #0f9d56; font-weight: 700; }
+.history-table .fail { color: #d93025; font-weight: 700; }
+
+/* responsive: reduce cell padding on very small screens */
+@media (max-width: 520px) {
+  .history-table thead th, .history-table td { padding: 8px; font-size: 13px; }
+}
+
+/* --- charts area sizing --- */
+.card .chart-wrap {
+  max-width: 100%;
+  height: 260px;
+}
+
+/* --- small utilities --- */
+h2 { margin: 0 0 12px 0; font-size: 20px; color: #111827; }
+h3 { margin: 0 0 8px 0; font-size: 16px; }
+h4 { margin: 0 0 8px 0; font-size: 15px; }
+
+/* tune pre block */
+pre { background: #f8fafc; padding: 10px; border-radius: 8px; overflow-x:auto; }
+
+/* footer spacing for tall tables */
+.container .left .card:last-child { margin-bottom: 30px; }
+
+.pro-rec {
+  margin-top: 18px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  border-left: 4px solid #0b63d1;
+  box-shadow: 0 8px 28px rgba(17, 24, 39, 0.06);
+}
+
+.rec-title {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.rec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 6px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.rec-item:last-child {
+  border-bottom: none;
+}
+
+.rec-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rec-index {
+  background: #0b63d1;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.rec-action {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rec-right {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.rec-delta {
+  color: #0f9d56;
+}
+
+.rec-newprob {
+  background: #e8f3ff;
+  color: #0b63d1;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  flex: 1;
+  min-width: 140px;
+  background: #f7faff;
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #e5edf7;
+}
+
+.stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 6px;
+  color: #0b63d1;
+}
+
+.chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0b63d1;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.chat-popup {
+  position: fixed;
+  bottom: 85px;
+  right: 20px;
+  width: 330px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  max-height: 420px;
+  border: 1px solid #eee;
+}
+
+.chat-header {
+  padding: 10px;
+  background: #0b63d1;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-body {
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.msg-user {
+  text-align: right;
+  margin: 5px 0;
+  background: #d1e7ff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.msg-bot {
+  text-align: left;
+  margin: 5px 0;
+  background: #f1f1f1;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.chat-input-area {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input-area input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+
+.chat-input-area button {
+  background: #0b63d1;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
